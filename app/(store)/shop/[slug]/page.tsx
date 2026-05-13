@@ -6,13 +6,22 @@ import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
 import { motion } from "framer-motion";
 import { Star, ChevronRight } from "lucide-react";
 
-// Placeholder 3D Model Component
+import { useCartStore } from "@/stores/cartStore";
+
+// Luxurious 3D Model Component
 function Model() {
-  // Normally useGLTF from a URL. We use a placeholder mesh for now.
   return (
     <mesh rotation={[0.5, 0.5, 0]}>
-      <boxGeometry args={[2, 2, 2]} />
-      <meshStandardMaterial color="#444" roughness={0.2} metalness={0.8} />
+      <torusKnotGeometry args={[1.5, 0.4, 256, 64]} />
+      <meshPhysicalMaterial 
+        color="#ffffff" 
+        transmission={1} 
+        thickness={1.5} 
+        roughness={0.1} 
+        ior={1.5} 
+        clearcoat={1} 
+        metalness={0.2}
+      />
     </mesh>
   );
 }
@@ -20,6 +29,21 @@ function Model() {
 export default function ProductDetailPage({ params }: { params: { slug: string } }) {
   const [activeTab, setActiveTab] = useState("description");
   const [selectedColor, setSelectedColor] = useState("black");
+  const [selectedSize, setSelectedSize] = useState("M");
+  const { addItem, openCart } = useCartStore();
+
+  const handleAddToCart = () => {
+    addItem({
+      id: `${params.slug}-${selectedColor}-${selectedSize}`,
+      productId: params.slug,
+      name: "The Essential Overcoat",
+      price: 495,
+      quantity: 1,
+      image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?q=80&w=800",
+      variant: `${selectedColor} - ${selectedSize}`,
+    });
+    openCart();
+  };
 
   return (
     <div className="min-h-screen pt-20">
@@ -75,7 +99,11 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
               </h3>
               <div className="grid grid-cols-4 gap-3">
                 {["S", "M", "L", "XL"].map((s) => (
-                  <button key={s} className="border border-border py-3 text-center hover:border-foreground transition-colors">
+                  <button 
+                    key={s} 
+                    onClick={() => setSelectedSize(s)}
+                    className={`border py-3 text-center transition-colors ${selectedSize === s ? 'border-foreground bg-foreground text-background' : 'border-border hover:border-foreground'}`}
+                  >
                     {s}
                   </button>
                 ))}
@@ -83,7 +111,10 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
             </div>
 
             {/* Sticky add to cart bar on mobile, normal button here */}
-            <button className="w-full bg-foreground text-background py-5 text-lg font-medium tracking-wide hover:bg-zinc-800 transition-colors mb-4 flex items-center justify-center space-x-2">
+            <button 
+              onClick={handleAddToCart}
+              className="w-full bg-foreground text-background py-5 text-lg font-medium tracking-wide hover:bg-zinc-800 transition-colors mb-4 flex items-center justify-center space-x-2"
+            >
               <span>ADD TO CART</span>
             </button>
             <p className="text-center text-sm text-muted-foreground flex items-center justify-center space-x-2 mb-16">

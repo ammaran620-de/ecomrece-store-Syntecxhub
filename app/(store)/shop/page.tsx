@@ -7,7 +7,7 @@ import { Filter, SlidersHorizontal } from "lucide-react";
 
 const PRODUCTS = [
   { id: "1", name: "The Essential Overcoat", price: "$495", image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?q=80&w=800", category: "Outerwear" },
-  { id: "2", name: "Silk Crepe Blouse", price: "$225", image: "https://images.unsplash.com/photo-1550614000-4b95d4ed7945?q=80&w=800", category: "Tops" },
+  { id: "2", name: "Silk Crepe Blouse", price: "$225", image: "https://images.unsplash.com/photo-1534126416832-a88fdf2911c2?q=80&w=800", category: "Tops" },
   { id: "3", name: "Pleated Wool Trousers", price: "$350", image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=800", category: "Bottoms" },
   { id: "4", name: "Leather Crossbody", price: "$580", image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=800", category: "Accessories" },
   { id: "5", name: "Cashmere Turtleneck", price: "$320", image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800", category: "Knitwear" },

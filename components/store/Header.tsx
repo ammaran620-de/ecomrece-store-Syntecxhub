@@ -32,8 +32,8 @@ export function Header() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2 text-sm uppercase tracking-widest font-medium">
           <Link href="/shop" className="hover:text-muted-foreground transition-colors">Collection</Link>
-          <Link href="#" className="hover:text-muted-foreground transition-colors">Editorial</Link>
-          <Link href="#" className="hover:text-muted-foreground transition-colors">About</Link>
+          <Link href="/editorial" className="hover:text-muted-foreground transition-colors">Editorial</Link>
+          <Link href="/about" className="hover:text-muted-foreground transition-colors">About</Link>
         </nav>
 
         {/* Actions */}
