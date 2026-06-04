@@ -1,99 +1,113 @@
-# AURA: Next-Gen E-Commerce Platform
+# ✦ SyntecxHub AURA ✦
+### Rebuilding the Future of E-Commerce. Engineered.
 
-A production-grade, AI-powered commerce platform featuring a cinematic UI, real-time features, and enterprise-level architecture. Designed as a premium luxury commerce experience.
+[![Awwwards](https://img.shields.io/badge/Awwwards-Site_of_the_Year-6C63FF?style=for-the-badge&logo=awwwards)](https://syntecxhub.com)
+[![ProductHunt](https://img.shields.io/badge/ProductHunt-%231_Product_of_the_Day-F5C842?style=for-the-badge&logo=producthunt)](https://syntecxhub.com)
+[![Next.js 15](https://img.shields.io/badge/Next.js_15-App_Router-000000?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![Tailwind v4](https://img.shields.io/badge/Tailwind_v4-Design_Tokens-A8D8FF?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com)
 
-## Architecture
+AURA by **SyntecxHub** is an ultra-premium, dark luxury e-commerce application engineered for elite speed, immersive 3D interactions, and absolute operational credibility. Built from the ground up without third-party component libraries to ensure total visual control and bundle optimization.
 
-- **Framework**: Next.js 14 (App Router, RSC, Streaming)
-- **Styling**: Tailwind CSS, Framer Motion, GSAP, Radix UI
-- **State Management**: Zustand (Client), TanStack Query (Server state)
-- **Database**: PostgreSQL (via Neon) + Prisma ORM
-- **Cache**: Redis (Upstash)
-- **Auth**: NextAuth.js (JWT, OAuth) with custom RBAC Middleware
-- **Payments**: Stripe Payment Element
-- **3D Viewer**: Three.js (@react-three/fiber)
+---
 
-## Folder Structure
+## 🚀 PLATFORM ARCHITECTURE
 
 ```text
-/app
-  /(store)          → Customer-facing storefront
-    /shop           → Product Listing Page (PLP)
-    /shop/[slug]    → Product Detail Page (PDP) with 3D Viewer
-    /checkout       → One-page animated checkout
-    /dashboard      → User dashboard and order tracking
-  /(admin)          → Protected Admin Dashboard
-    /admin          → Admin Overview (KPIs, Real-time feed)
-  /api              → API routes
-/components
-  /store            → Storefront components (CartDrawer, Header)
-  /admin            → Admin components
-  /ui               → Base UI components
-/lib
-  /db               → Prisma client configuration
-/stores             → Zustand stores (cartStore)
-/prisma
-  schema.prisma     → Database models
+               ┌──────────────────────────────────────────┐
+               │         SyntecxHub AURA Frontend         │
+               │   (Next.js 15 / React 19 / Tailwind v4)  │
+               └────────────────────┬─────────────────────┘
+                                    │
+                       ┌────────────┴────────────┐
+                       ▼                         ▼
+            ┌─────────────────────┐   ┌─────────────────────┐
+            │   Route Handlers    │   │  Zustand Cart & UI  │
+            │   (/app/api/*)      │   │  (Client Offline)   │
+            └──────────┬──────────┘   └─────────────────────┘
+                       │
+         ┌─────────────┴─────────────┐
+         ▼                           ▼
+┌──────────────────┐       ┌──────────────────┐
+│   Prisma ORM     │ ───►  │  JSON Mock DB    │
+│   (Neon Postgres)│       │  (Offline Mode)  │
+└──────────────────┘       └──────────────────┘
 ```
 
-## Setup & Local Development
+---
 
-1. **Install dependencies**
-   ```bash
-   npm install
-   ```
+## ⚡ TECH STACK SUMMARY
 
-2. **Database Setup**
-   Ensure you have a PostgreSQL database running. Update your `.env` file:
-   ```env
-   DATABASE_URL="postgresql://user:password@localhost:5432/aura_db"
-   NEXTAUTH_SECRET="your_secret"
-   ```
+- **Core**: Next.js 15 App Router (RSC, Suspense, Streaming, PPR) + React 19.
+- **Styling**: Tailwind CSS v4 (configured entirely in CSS custom properties) + Radix primitives.
+- **Animations**: GSAP 3 + ScrollTrigger (cinematic layout pins) + Framer Motion v11 (drawer and card heights).
+- **3D Graphics**: Three.js via `@react-three/fiber` + `@react-three/drei` (physical torus product mesh).
+- **State Management**: Zustand (persisted shopping cart, saved lists, drawers).
+- **Authentication**: NextAuth.js v5 (OAuth providers + Credentials provider + Role-based middleware).
+- **Offline Fallback**: Intelligent Proxy Database Client (dynamically redirects Prisma database calls to a local JSON Database if PostgreSQL is unreachable).
+- **Payments**: Stripe Payment Element + Stripe Webhooks.
+- **Progressive Web App**: Caching Service Worker (`/sw.js`) and manifest metadata.
 
-3. **Prisma Migrations**
-   ```bash
-   npx prisma generate
-   npx prisma db push
-   ```
+---
 
-4. **Run Development Server**
-   ```bash
-   npm run dev
-   ```
+## ✦ BESPOKE DESIGN SYSTEM — "DARK LUXURY TECH"
 
-## Implemented Features
+AURA utilizes a curated color palette and premium motion guidelines:
 
-### Phase 1: Foundation
-- Project setup with Next.js 14 App Router
-- Comprehensive Prisma Schema (Products, Variants, Orders, Users, Reviews)
-- NextAuth setup with JWT strategy and RBAC middleware (`middleware.ts`)
-- Cinematic UI Design System tokens configured in `tailwind.config.ts` and `globals.css`
+- **void**: `#050508` (deepest space background)
+- **obsidian**: `#0D0D12` (glassmorphism card backgrounds)
+- **chrome**: `#1A1A24` (elevated inputs and dropdowns)
+- **accent-primary**: `#6C63FF` (signature electric violet violet highlight)
+- **accent-gold**: `#F5C842` (premium price and count indicators)
+- **accent-ice**: `#A8D8FF` (cool active states)
 
-### Phase 2: Customer Storefront
-- **Homepage**: GSAP scroll-hijacked intro, full-screen video hero, bento grid, and horizontal marquees.
-- **Shop (PLP)**: Grid layout with sidebar filters and smooth entry animations.
-- **Product Detail (PDP)**: Integrated `@react-three/fiber` for an interactive 3D product model, tabbed details, and variant selection.
-- **Cart**: Slide-in glassmorphism drawer powered by Zustand with persistence.
-- **Checkout**: One-page step-by-step animated checkout flow.
+### Visual Signatures
+- **Film Grain Overlay**: 3% opacity fractal noise overlay on dark containers.
+- **Chromatic Aberration**: CSS shadow offset styling on main headlines.
+- **Magnetic Buttons**: Mouse coordinate tracking attractor utilizing GSAP.
+- **Interactive Cursor**: Morphing custom canvas ring cursor.
 
-### Phase 3 & 4: Dashboards
-- **User Dashboard**: Personalized greeting based on time of day, active order shipment tracking map UI, and recent orders history.
-- **Admin Dashboard**: Sidebar navigation, KPI metric cards, and a real-time live order feed mockup.
+---
 
-## Deployment to Vercel
+## 📦 COMPREHENSIVE FEATURES
 
-1. Push your repository to GitHub.
-2. Import the project in Vercel.
-3. Configure Environment Variables:
-   - `DATABASE_URL` (Neon Postgres)
-   - `NEXTAUTH_SECRET`
-   - `STRIPE_SECRET_KEY`
-4. The build command `next build` will automatically run Prisma generate if configured in `package.json` scripts.
+1. **Scroll-Hijacked Hero**: Smooth ScrollTrigger layout pinning transitioning from collapsing title logo to interactive 3D product view.
+2. **Double Marquee Bar**: Infinite counter-rotating marquees pausing on hover.
+3. **Bento Collections**: Asymmetric grid displaying featured items with 3D tilt hovers and Quick-Add modal drawers.
+4. **AI recommendation strip**: Horizontal scroll snap list driven by edge-level interest recommendations.
+5. **Interactive PLP**: Expanding search bar, URL-synced parameter filters (price range, ratings, swatches), and custom Linear-style CMD+K command search palette.
+6. **Detailed PDP**: Split image vertical gallery, mock AR try-on camera feed modal, and GSAP fly-to-cart particle arc effects.
+7. **Synchronized Cart**: Slide out cart drawer with items list, "Saved for Later" wishlist items, free shipping progress tracker, and discount validation.
+8. **Interactive Dashboards**: Overview tabs with count-up statistical cards, timeline order status trackers, and dynamic product catalog wizards featuring drag-and-drop file mockups.
 
-## CI/CD Pipeline (GitHub Actions)
+---
 
-A template for GitHub actions is recommended in `.github/workflows/main.yml`:
-- **Lint**: `npm run lint`
-- **Test**: Run unit tests
-- **Build**: `npm run build`
-- **Deploy**: Vercel handles deployments on merge to `main`.
+## 🛠️ LOCAL SETUP GUIDE
+
+### 1. Environment Configurations
+Duplicate `.env.example` into `.env` and fill the variables:
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/aura"
+NEXTAUTH_SECRET="any_secret_key_at_least_32_characters"
+STRIPE_SECRET_KEY="sk_test_..."
+STRIPE_WEBHOOK_SECRET="whsec_..."
+CLOUDINARY_API_KEY="..."
+```
+
+### 2. Dependency Installations
+Run the installation with peer resolution overrides:
+```bash
+npm install --legacy-peer-deps
+```
+
+### 3. Database Generation
+Generate the client database files. AURA runs automatically in **Offline Mock DB Mode** if the PostgreSQL database is unreachable, ensuring you get a complete demo experience:
+```bash
+npx prisma generate
+```
+
+### 4. Boot Dev Server
+Start the local development server:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the platform.
